@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <script>
+    function generateQuote() {
+      fetch('/generate-quote')
+        .then(response => response.text())
+        .then(quote => {
+          document.getElementById('quote').textContent = quote;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+    function sendEmail() {
+      const email = document.getElementById('Email').value;
+      
+    //   console.log(email)
+      const url = '/send-email?email=' + encodeURIComponent(email);
+
+      if (!email) {
+            alert('Please enter your email');
+            return;
+  }
+      fetch(url)
+        .then(response => console.log('Email sent...'))
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+  </script>
+</head>
+<body>
+  <h1>GENERATE QUOTE</h1><br>
+  <label for="Email">Enter Email</label>
+  <input type="email" id="Email" required>
+  <button onclick="generateQuote()" >Generate Quote</button>
+  <button onclick="sendEmail()" >Send Quote in Email</button>
+  <br><br><br>
+  <div id="quote"></div>
+</body>
+</html>
