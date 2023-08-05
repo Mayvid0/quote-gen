@@ -107,13 +107,13 @@ function sendEmail(email, quoted_text) {
   const transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "mayvid007@gmail.com",
+      user: "divbillowria@gmail.com",
       pass: process.env.EMAIL_pass,
     },
   });
 
   const mailOptions = {
-    from: "mayvid007@gmail.com",
+    from: "divbillowria@gmail.com",
     to: email,
     subject: "Quote of the Day",
     text: quoted_text,
